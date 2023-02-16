@@ -1,0 +1,44 @@
+ALGORITHM SumOfDistinctElements
+VAR
+// declarations des jeux c'est à dire les tableaux.
+// declaration de la somme qui stockera la somme des éléments distincts.
+// declaration de i variable d'itération. 
+    set1, set2: ARRAY_OF INTEGER[10];
+    somme: INTEGER :=0; 
+    i: INTEGER;
+BEGIN
+// Ici on parcourt le premier tableau en demande à l'utilisateur de mettre les éléments.
+    FOR i FROM 0 TO set1.lenght-1 STEP 1 DO
+        Write("Donner l'élément du jeu set1.");
+        Read(set1[i]);
+    END_FOR
+// Ici on parcourt le deuxiéme tableau en demande à l'utilisateur de mettre les éléments.    
+    FOR i FROM 0 TO set2.lenght-1 STEP step  DO
+        Write("Donner l'élément du jeu set2.");
+        Read(set2[i]);
+    END_FOR
+// Ici on parcourt le premier tableau à chaque élément.
+// On parcourt aussi le deuxiéme tableau au complet mais à chaque itération au niveau du deuxiéme tableau,
+// on vérifie si l'élément est différent de l'élément du premier tableau.
+// Si cette comparaison est vraie on ajoute l'élément du premier tableau à la somme. 
+    FOR i FROM 0 TO set1.lenght-1 STEP 1 DO
+        Read(set1[i]);
+        FOR i FROM 0 TO set2.lenght-1 STEP 1 DO
+            Read(set2[i]);
+            IF (set1[i] <> set2[i]) THEN
+                somme := somme + set1[i];
+            END_IF
+        END_FOR
+    END_FOR
+// On fait la même chose pour le deuxiéme tableau.
+    FOR i FROM 0 TO set2.lenght-1 STEP 1 DO
+        Read(set2[i]);
+        FOR i FROM 0 TO set1.lenght-1 STEP 1 DO
+            Read(set1[i]);
+            IF (set2[i] <> set1[i]) THEN
+                somme := somme + set2[i];
+            END_IF
+        END_FOR
+    END_FOR
+    Write(somme);
+END

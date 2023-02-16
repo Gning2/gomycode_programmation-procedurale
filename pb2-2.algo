@@ -1,0 +1,35 @@
+// Déclarations des variables
+    i : INTEGER;
+    ps : FLOAT:=0;
+
+// Fonction calculant le produit scalaire des deux vecteurs.
+// La fonction est de type float et retourne la valeur de ps.
+FUNCTION dot_product(VAR v1,VAR v2 : ARRAY_OF FLOAT[5]): FLOAT
+BEGIN
+    FOR i FROM 0 TO v1.lenght-1 DO
+        ps := ps + (v1[i] * v2[i] )
+    END FOR
+    RETURN ps
+END
+
+ALGORITHM produit_scalaire
+VAR
+    n : INTEGER;
+    result : FLOAT :=0;
+BEGIN
+    Write("Donner la taille des vecteurs");
+    FOR i FROM 1 TO n STEP 1  DO
+        Write("Donner l'élément du vecteur v1.");
+        Read(v1[n]);
+        Write("Donner l'élément du vecteur v2.");
+        Read(v2[n]);
+    END_FOR
+    FOR i FROM 0 TO v1.lenght-1 STEP 1  DO
+        result := dot_product(v1, v2)
+        IF (result :=0) THEN
+            Write("Les vecteurs sont orthogonaux.");
+        ELSE
+            Write("Les vecteurs ne sont pas orthogonaux.");
+        END_IF
+    END_FOR
+END
